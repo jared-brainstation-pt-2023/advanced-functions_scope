@@ -1,0 +1,138 @@
+<html>
+    <head>
+        <title>Advanced Functions & Scope</title>
+    </head>
+</html>
+<script>
+    //global variables set to integers
+    const width = 20;
+    const height = 10;
+    let newWidth = 120;
+    let newHeight = 100;
+
+    //defining a function named rectangle area that takes 2 parameters named with and height
+    //the width & height parameters are local to that function, so the width & height variables set above are not able to be used in the function
+    function rectangleArea(width, height){
+        //instantiating undefined variables
+        let area;
+        let message;
+        //insantiating a variable to a string
+        let dang = "dang dang";
+        //if no width or no height
+        if(!width || !height){
+            //set the message variable to this string
+            message = "Please input width & height";
+            //print message to the console
+            console.log(message)
+        //if width & height in the parameters
+        } else {
+            //logging the current value of message
+            console.log(message)
+            //set the area variable to width x height
+            area = width * height;
+            //re-instantiate the dang variable to another string
+            let dang = "dang your house is big"
+            //if width is greater than 100 ...
+            if(width > 100){
+                //... then console log whatever dang is equal to within the scope here
+                console.log(dang)
+            }
+            //defining the message variable as a string
+            message = "now we're defining it in this scope"
+            //logging the current value of the message variable in this scope
+            console.log(message)
+            //logging the value of the dang variable in this scope
+            console.log(dang)
+        }
+        //logging the value of the dang variable in this scope
+        console.log(dang)
+        //logging the value of the newWidth & newHeight variables multiplied together to show their scope
+        console.log(newWidth * newHeight)
+        //logging the value of width & height multiplied together to show their scope
+        console.log(width * height)
+        //this function is return the area variable, which means the function equals that area variable
+        // you can set a variable to this function call to store the area value as part of your application
+        return area;
+    }
+    //logging the value of when you call the rectangleArea function with inputs from the newWidth & newHeight global variables
+    console.log(rectangleArea(newWidth, newHeight))
+
+    //storing the return value of the rectangleArea function in a constant variable called houseArea
+    //the width and height global variables are used as parameters in the rectangleArea function call
+    const houseArea = rectangleArea(width, height);
+    //logging the value of the houseArea variable
+    console.log(houseArea)
+
+    //creating a function called printArea that takes 2 parameters, dimensions & unit
+    function printArea(dimensions, unit){
+        //if dimensions and unit values are undefined ...
+        if(dimensions == undefined && unit == undefined){
+            //... then run this logic
+            console.log("Please include dimensions and units")
+        //if unit is undefined and dimensions is defined ...
+        } else if (unit == undefined && dimensions != undefined){
+            // ... then run this logic
+            console.log("Please include units")
+        //if dimensions is undefined and units is defined ...
+        } else if (dimensions == undefined && units != undefined){
+            // ... then run this logic
+            console.log("Please include dimensions")
+        // if dimensions & unit is defined ...
+        } else {
+            // ... then run this logic
+            console.log('the area is: ' + dimensions + ' square ' + unit)
+        }
+    }
+    //run the printArea function with incorrect parameters
+    printArea(houseArea)
+    //run the printArea function with correct parameters
+    printArea(houseArea, 'km')
+
+    //creating a function called printHello that takes no parameters & logs "hello" to the console
+    function printHello(){
+        console.log("hello")
+    }
+    //running the javascript built-in setTimeout function that takes 2 parameters, a function and a number
+    //here, after 3 seconds (3000 ms) the printHello function will be called
+    setTimeout(printHello, 3000)
+
+    //running the javascript built-in setInterval function with takes 2 parameters, a function and a number
+    //here, every 3 seconds (3000 ms) the printHello function will be called
+    //i commented it out because it gets annoying
+    //setInterval(printHello, 3000)
+
+    //creating a function called printArgument that takes a parameters & logs it to the console
+    function printArgument(wordToBePrinted){
+        console.log(wordToBePrinted)
+    }
+    //running the javascript built-in setTimeout function that takes 2 parameters, a function and a number
+    //here, after 3 seconds (3000 ms) the printArgument function will be called, using a string as the parameter value
+    setTimeout(() => {
+        printArgument("What's Up")
+    }, 3000)
+    //running the javascript built-in setInterval function with takes 2 parameters, a function and a number
+    //here, every 3 seconds (3000 ms) the printArgument & printArea function will be called
+    //i commented it out because it gets annoying
+    // setInterval(function(){
+    //     printArgument("Goodbye")
+    //     printArea(width, height)
+    // }, 3000)
+
+    //creating a function called printNumber that takes 1 parameter using arrow functions
+    let printNumber = (number) => {
+        //if the number parameter is not a number/integer ...
+        if(typeof number !== "number"){
+            // ... then run this logic
+            console.log("Please Input Integer")
+        //if the number parameter is a number/integer ...
+        } else {
+            // ... then run this logic
+            console.log("Here's a number: " + number)
+        }
+    }
+    //running the printNumber function using an incorrect parameter
+    printNumber("hello")
+    //running the printNumber function using a correct parameter
+    printNumber(22)
+
+</script>
